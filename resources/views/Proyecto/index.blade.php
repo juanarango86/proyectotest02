@@ -16,9 +16,7 @@
 
             </div>
             <br>
-            <div class="col-lg-12">
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
+
                         <div class="table-responsive">
                             <table id="tblproyectos"
                                 class="mb-0 table table-bordered table-hover table-sm table-bordered"
@@ -45,7 +43,7 @@
                                         <td>{{$proyecto->Estado}}</td>
                                         <td>
                                             <a href="{{ route('proyectoedit', $proyecto->Id_Proyecto) }}" type="submit"
-                                                class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-success">Editar</a>
+                                                class="mb-2 mr-2 btn-transition btn btn-outline-info">Editar</a>
                                         </td>
                                         <td>
                                             <form method="POST"
@@ -53,7 +51,7 @@
                                                 {!!method_field('DELETE')!!}
                                                 @csrf
                                                 <button type="submit"
-                                                    class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-danger">Eliminar</button>
+                                                    class="mb-2 mr-2 btn-transition btn btn-outline-danger">Eliminar</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -66,9 +64,7 @@
                                 </tbody>
 
                             </table>
-                        </div>
-                    </div>
-                </div>
+                     
             </div>
         </div>
     </div>

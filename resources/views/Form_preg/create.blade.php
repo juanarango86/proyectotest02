@@ -3,18 +3,6 @@
 
 <div class="main-card mb-3 card">
     <div class="card-body">
-        <!-- @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Error!</strong> Revise los campos obligatorios.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-					@endforeach
-					
-                </ul>
-            </div>
-            @endif -->
-
 
         @if(Session::has('success'))
         <div class="alert alert-info">
@@ -30,43 +18,56 @@
                 <div class="panel-body">
                     <div class="table-container">
                         <form class="needs-validation" novalidate method="POST" action="{{route('form_pregsstore')}}">
-                            <!--   {!!Form::open(array('url'=>'Form_preg','method'=>'POST','autocomplete'=>'off'))!!}
-						{{Form::token()}} -->
+                          
                             @csrf
                              <div class="row">
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group form-rounde">
-                                        <input type="number" name="id_Pregunta" class="form-control form-rounded" id="validationCustom03"
-                                            placeholder="Id_Pregunta" required placeholder="Id_Pregunta"
-                                            value="{{old('id_Pregunta')}}">
-                                        <div class="invalid-feedback">
-                                            Debe ingresar el id de la id_Pregunta
-                                        </div>
-                                        <!--  {!! $errors->first('id_Encuesta','<span style=color:blue;">:message</span>')!!} -->
-
+                                    <div class="form-group">
+                                    <select type="text" name="id_Pregunta" class="form-control" id="validationCustom03"
+                                            data-live-search="true">
+                                            <option value="" enabled>Seleccione Pregunta</option>
+                    
+                                            @foreach($preguntas as $fyp)
+                    
+                                            <option value="{{$fyp->Id_Pregunta}}">{{$fyp->Pregunta}}</option>
+                            
+                                            @endforeach
+                                    </select>
+                               
                                     </div>
-
                                 </div>
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="number" name="id_Formulario" class="form-control" id="validationCustom03"
-                                            placeholder="Id_Formulario" required value="{{old('id_Formulario')}}">
-                                        <div class="invalid-feedback">
-                                            Debe ingresar id del id_Formulario
-                                        </div>
-                                        <!-- {!! $errors->first('id_Formulario','<span style=color:blue;">:message</span>')!!} -->
+                                    <select type="text" name="id_Formulario" class="form-control" id="validationCustom03"
+                                            data-live-search="true">
+                                            <option value="" enabled>Seleccione Formulario</option>
+                    
+                                            @foreach($formularios as $form)
+                    
+                                            <option value="{{$form->Id_Formulario}}">{{$form->Nombre}}</option>
+                            
+                                            @endforeach
+                                    </select>
+                               
                                     </div>
                                 </div>
+
 								
-								 <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="number" name="id_Respuesta" class="form-control" id="validationCustom03"
-                                            placeholder="Id_Respuesta" required value="{{old('id_Respuesta')}}">
-                                        <div class="invalid-feedback">
-                                            Debe ingresar id del id_Respuesta
-                                        </div>
-                                        <!-- {!! $errors->first('id_Respuesta','<span style=color:blue;">:message</span>')!!} -->
+                                    <select type="text" name="id_Respuesta" class="form-control" id="validationCustom03"
+                                            data-live-search="true">
+                                            <option value="" enabled>Seleccione Respuesta</option>
+                    
+                                            @foreach($respuestas as $res)
+                    
+                                            <option value="{{$res->Id_Respuesta}}">{{$res->Respuesta}}</option>
+                            
+                                            @endforeach
+                                    </select>
+                               
                                     </div>
                                 </div>
 
@@ -81,8 +82,7 @@
                                 </div>
 
                             </div>
-                            <!-- </form> -->
-                            <!-- {!!form::close()!!} -->
+              
                         </form>
                     </div>
                 </div>

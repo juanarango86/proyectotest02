@@ -38,13 +38,13 @@
                             <td>{{$pregunta->tipo_de_preguntas}}</td>
                             <td>
                                 <a href="{{ route('preguntaedit', $pregunta->Id_Pregunta) }}" type="submit"
-                                    class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-success">Editar</a>
+                                    class="mb-2 mr-2 btn-transition btn btn-outline-info">Editar</a>
                             </td>
                             <td>
                                 <form method="POST" action="{{route('preguntadelete',$pregunta->Id_Pregunta)}}">
                                     {!!method_field('DELETE')!!}
                                     @csrf
-                                    <button type="submit" class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-danger">Eliminar</button>
+                                    <button type="submit" class="mb-2 mr-2 btn-transition btn btn-outline-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

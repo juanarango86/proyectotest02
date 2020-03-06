@@ -19,7 +19,7 @@
             <br>
             
             <div class="table-responsive">
-                <table id="tblusuarios" class="mb-0 table table-bordered table-hover table-sm table-responsive" style="width:100%" cellspacing="0">
+                <table id="tblusuarios" class="mb-0 table table-bordered table-hover table-sm table-bordered" style="width:100%" cellspacing="0">
                     <thead>
                         <th scope="col">Nombre</th>
                         <th scope="col">Rol</th>
@@ -46,13 +46,13 @@
                             <td>{{$usuario->Celular}}</td>
                             <td>
                                 <a href="{{ route('usuarioedit', $usuario->Id_Usuario) }}" type="submit"
-                                    class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-success">Editar</a>
+                                    class="mb-2 mr-2 btn-transition btn btn-outline-info">Editar</a>
                             </td>
                             <td>
                                 <form method="POST" action="{{route('usuariodelete',$usuario->Id_Usuario)}}">
                                     {!!method_field('DELETE')!!}
                                     @csrf
-                                    <button type="submit" class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-danger">Eliminar</button>
+                                    <button type="submit" class="mb-2 mr-2 btn-transition btn btn-outline-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

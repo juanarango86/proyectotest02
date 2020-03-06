@@ -41,7 +41,7 @@
                                         <td>{{$flujo->Pregunta}}</td>
                                         <td>
                                             <a href="{{ route('flujoedit', $flujo->Id_Flujo) }}" type="submit"
-                                                class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-success">Editar</a>
+                                                class="mb-2 mr-2 btn-transition btn btn-outline-info">Editar</a>
                                         </td>
                                         <td>
                                             <form method="POST"
@@ -49,7 +49,7 @@
                                                 {!!method_field('DELETE')!!}
                                                 @csrf
                                                 <button type="submit"
-                                                    class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-danger">Eliminar</button>
+                                                    class="mb-2 mr-2 btn-transition btn btn-outline-danger">Eliminar</button>
                                             </form>
                                         </td>
                                     </tr>

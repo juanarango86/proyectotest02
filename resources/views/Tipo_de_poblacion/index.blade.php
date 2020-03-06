@@ -19,7 +19,7 @@
             <br>
             
             <div class="table-responsive">
-                <table id="tbltipo_de_poblacions" class="mb-0 table table-bordered table-hover table-sm table-responsive" style="width:100%" cellspacing="0">
+                <table id="tbltipo_de_poblacions" class="mb-0 table table-bordered table-hover table-sm table-bordered" style="width:100%" cellspacing="0">
                     <thead>
                         <!--  <th scope="col">Id</th> -->
                         <th scope="col">Nombre_De_Poblacion</th>
@@ -40,13 +40,13 @@
                             <td>{{$tipo_de_poblacion->Estrato_Social}}</td>
                             <td>
                                 <a href="{{ route('tipo_de_poblacionedit', $tipo_de_poblacion->Id_Tipo_De_Poblacion) }}" type="submit"
-                                    class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-success">Editar</a>
+                                    class="mb-2 mr-2 btn-transition btn btn-outline-info">Editar</a>
                             </td>
                             <td>
                                 <form method="POST" action="{{route('tipo_de_poblaciondelete',$tipo_de_poblacion->Id_Tipo_De_Poblacion)}}">
                                     {!!method_field('DELETE')!!}
                                     @csrf
-                                    <button type="submit" class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-danger">Eliminar</button>
+                                    <button type="submit" class="mb-2 mr-2 btn-transition btn btn-outline-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

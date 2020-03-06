@@ -19,7 +19,7 @@
             <br>
             
             <div class="table-responsive">
-                <table id="tblasignacion_encuestas" class="mb-0 table table-bordered table-hover table-sm table-responsive" style="width:100%" cellspacing="0">
+                <table id="tblasignacion_encuestas" class="mb-0 table table-bordered table-hover table-sm table-bordered" style="width:100%" cellspacing="0">
                     <thead>
                         <th scope="col">Encuesta</th>
                         <th scope="col">Usuario</th>
@@ -36,13 +36,13 @@
                             <td>{{$asignacion_encuesta->Nombre}}</td>
                             <td>
                                 <a href="{{ route('asignacion_encuestaedit', $asignacion_encuesta->Id_Asignacion_Encuesta) }}" type="submit"
-                                    class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-success">Editar</a>
+                                    class="mb-2 mr-2 btn-transition btn btn-outline-info">Editar</a>
                             </td>
                             <td>
                                 <form method="POST" action="{{route('asignacion_encuestadelete',$asignacion_encuesta->Id_Asignacion_Encuesta)}}">
                                     {!!method_field('DELETE')!!}
                                     @csrf
-                                    <button type="submit" class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-danger">Eliminar</button>
+                                    <button type="submit" class="mb-2 mr-2 btn-transition btn btn-outline-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

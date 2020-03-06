@@ -29,34 +29,69 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-container">
-                        <form method='POST' action="{{route('form_pregupdate', $form_preg->Id_form_preg)}}">
+                        <form method='POST' action="{{route('form_pregupdate', $form_pregs->Id_form_preg)}}">
                             {!!method_field('PUT')!!}
                             @csrf
                             <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="number" name="id_Pregunta" id="id_Pregunta" class="form-control input-sm"
-                                            placeholder="id_Pregunta" value="{{$form_preg->Id_Pregunta}}">
-                                        {!! $errors->first('id_Pregunta','<span style=color:blue;">:message</span>')!!}
-
-                                    </div>
-                                </div>
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="number" name="id_Formulario" id="id_Formulario" class="form-control input-sm"
-                                            placeholder="id_Formulario" value="{{$form_preg->Id_Formulario}}">
-                                        {!! $errors->first('id_Formulario','<span style=color:blue;">:message</span>')!!}
+                                        <select type="text" name="id_Pregunta" class="form-control"
+                                            id="validationCustom03" data-live-search="true">
+                                            <!-- <option value="" enabled>Seleccione el Cliente</option> -->
+
+                                            @foreach($preguntas as $preg)
+
+                                            <option {{$form_pregs->Id_Pregunta==$preg->Id_Pregunta?'selected':''}}
+                                                value="{{$preg->Id_Pregunta}}">{{$preg->Pregunta}}</option>
+
+                                            @endforeach
+
+                                        </select>
                                     </div>
                                 </div>
-								
-								<div class="col-xs-6 col-sm-6 col-md-6">
+
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="number" name="id_Respuesta" id="id_Respuesta" class="form-control input-sm"
-                                            placeholder="id_Respuesta" value="{{$form_preg->Id_Respuesta}}">
-                                        {!! $errors->first('id_Respuesta','<span style=color:blue;">:message</span>')!!}
+                                        <select type="text" name="id_Formulario" class="form-control"
+                                            id="validationCustom03" data-live-search="true">
+                                            <!-- <option value="" enabled>Seleccione el Cliente</option> -->
+
+                                            @foreach($formularios as $form)
+
+                                            <option {{$form_pregs->Id_Formulario==$form->Id_Formulario?'selected':''}}
+                                                value="{{$form->Id_Formulario}}">{{$form->Nombre}}</option>
+
+                                            @endforeach
+
+                                        </select>
                                     </div>
                                 </div>
+
+
+
+
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <select type="text" name="id_Respuesta" class="form-control"
+                                            id="validationCustom03" data-live-search="true">
+                                            <!-- <option value="" enabled>Seleccione el Cliente</option> -->
+
+                                            @foreach($respuestas as $resp)
+
+                                            <option {{$form_pregs->Id_Respuesta==$resp->Id_Respuesta?'selected':''}}
+                                                value="{{$resp->Id_Respuesta}}">{{$resp->Respuesta}}</option>
+
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
 
                             </div>
                             <br>
@@ -64,8 +99,10 @@
                             <div class="row">
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-									<button type="submit" value="Actualizar" class="mb-2 mr-2 btn-transition btn btn-outline-primary btn-block">Actualizar</button>
-                                    <a href="{{ route('Form_preg.index') }}" class="mb-2 mr-2 btn-transition btn btn-outline-info btn-block">Atrás</a>
+                                    <button type="submit" value="Actualizar"
+                                        class="mb-2 mr-2 btn-transition btn btn-outline-primary btn-block">Actualizar</button>
+                                    <a href="{{ route('Form_preg.index') }}"
+                                        class="mb-2 mr-2 btn-transition btn btn-outline-info btn-block">Atrás</a>
                                 </div>
 
                             </div>

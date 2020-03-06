@@ -19,31 +19,30 @@
             <br>
             
             <div class="table-responsive">
-                <table id="tblform_pregs" class="mb-0 table table-bordered table-hover table-sm table-responsive" style="width:100%" cellspacing="0">
+                <table id="tblform_pregs" class="mb-0 table table-bordered table-hover table-sm table-bordered" style="width:100%" cellspacing="0">
                     <thead>
-                        <th scope="col">Id_Pregunta</th>
-                        <th scope="col">Id_Formulario</th>
-						<th scope="col">Id_Respuesta</th>
+                        <th scope="col">Pregunta</th>
+                        <th scope="col">Formulario</th>
+						<th scope="col">Respuesta</th>
                         <th scope="col">Editar
                         <th scope="col">Eliminar
                     </thead>
                     <tbody>
                         @if($form_pregs->count())
                         @foreach($form_pregs as $form_preg)
-                        <tr>
-                            
-                            <td>{{$form_preg->Id_Pregunta}}</td>
-                            <td>{{$form_preg->Id_Formulario}}</td>
-							<td>{{$form_preg->Id_Respuesta}}</td>
+                        <tr>                            
+                            <td>{{$form_preg->Pregunta}}</td>
+                            <td>{{$form_preg->Nombre}}</td>
+							<td>{{$form_preg->Respuesta}}</td>
                             <td>
                                 <a href="{{ route('form_pregedit', $form_preg->Id_form_preg) }}" type="submit"
-                                    class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-success">Editar</a>
+                                    class="mb-2 mr-2 btn-transition btn btn-outline-info">Editar</a>
                             </td>
                             <td>
                                 <form method="POST" action="{{route('form_pregdelete',$form_preg->Id_form_preg)}}">
                                     {!!method_field('DELETE')!!}
                                     @csrf
-                                    <button type="submit" class="mb-2 mr-2 btn-transition-sm btn-sm btn-outline-danger">Eliminar</button>
+                                    <button type="submit" class="mb-2 mr-2 btn-transition btn btn-outline-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

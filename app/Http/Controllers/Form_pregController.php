@@ -6,7 +6,9 @@ use App\Form_preg;
 use Illuminate\Http\Request;
 /* use App\Http\Controllers\Controller; */
 use App\Http\Requests\Form_pregFormRequest;
+use App\Http\Controllers\Controller; 
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
+use DB;
 
 class Form_pregController extends Controller
 {
@@ -17,9 +19,25 @@ class Form_pregController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        $form_pregs=Form_preg::orderBy('Id_form_preg','DESC')->paginate();
-        return view('Form_preg.index',compact('form_pregs'));
+        if($request){
+            $sql=trim($request->get('buscarTexto'));
+            $form_pregs=DB::table('form_pregs')
+            ->join('preguntas','preguntas.Id_Pregunta','form_pregs.Id_Pregunta')
+            ->join('formularios','formularios.Id_Formulario','form_pregs.Id_Formulario')
+            ->join('respuestas','respuestas.Id_Respuesta','form_pregs.Id_Respuesta')
+            ->select('form_pregs.*','preguntas.Pregunta','formularios.Nombre','respuestas.Respuesta')
+            ->where('Pregunta','LIKE','%'.$sql.'%')
+            ->where('Nombre','LIKE','%'.$sql.'%')
+            ->where('Respuesta','LIKE','%'.$sql.'%')
+            ->orderBy('form_pregs.Id_form_preg','desc')
+            ->groupBy('form_pregs.Id_form_preg',
+            'form_pregs.Id_Pregunta',
+            'form_pregs.Id_Formulario',
+            'form_pregs.Id_Respuesta',
+            'preguntas.Pregunta','formularios.Nombre','respuestas.Respuesta')
+            ->paginate(8);
+             return view('Form_preg.index',["form_pregs"=>$form_pregs,"buscarTexto"=>$sql]);
+        }
     }
 
     /**
@@ -30,7 +48,14 @@ class Form_pregController extends Controller
     public function create()
     {
         //
-        return view('Form_preg.create',['form_preg'=>new Form_preg()]);
+
+        $preguntas=DB::table('preguntas')->get();
+        $formularios=DB::table('formularios')->get();
+        $respuestas=DB::table('respuestas')->get();
+        return view('Form_preg.create',["preguntas"=>$preguntas, "formularios"=>$formularios, "respuestas"=>$respuestas]);
+    
+        
+        /* return view('Form_preg.create',['form_preg'=>new Form_preg()]); */
     }
 
     /**
@@ -48,7 +73,7 @@ class Form_pregController extends Controller
         $form_preg->Id_Formulario=$request->input('id_Formulario');
         $form_preg->Id_Respuesta=$request->input('id_Respuesta');        
         $form_preg->save();
-
+             /*  return redirect()->route('form_pregslistado'); */
         return redirect()->route('Form_preg.index')->with('success','Registro creado satisfactoriamente');
     }      
 
@@ -62,7 +87,7 @@ class Form_pregController extends Controller
     public function show($id)
     {
         //
-        $form_pregs=Form_preg::find($id);
+        $form_preg=Form_preg::find($id);
         return view('Form_preg.index',compact('form_pregs'));
     
     }
@@ -73,11 +98,16 @@ class Form_pregController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($Id_form_preg)
     {
         //
-        $form_preg=Form_preg::where('Id_form_preg',$Id_form_preg)->first();
-        return view('Form_preg.edit',compact('form_preg'));
+        $preguntas=DB::table('preguntas')->get();
+        $formularios=DB::table('formularios')->get();
+        $respuestas=DB::table('respuestas')->get();
+
+        $form_pregs=Form_preg::where('Id_form_preg',$Id_form_preg)->first();
+        return view('Form_preg.edit',compact('form_pregs','preguntas','formularios','respuestas'));
     }
 
     /**
@@ -89,21 +119,14 @@ class Form_pregController extends Controller
      */
     public function update(Form_pregFormRequest $request, $Id_form_preg)
     {
-        //
-       /*  $this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'telefono'=>'required', 'celular'=>'required', 'correo'=>'required']);
-  */
 
-       /*  Cliente::find($id)->update($request->all());
-        return redirect()->route('Cliente.index')->with('success','Registro actualizado satisfactoriamente');
-  */
-        $form_preg=Form_preg::where('Id_form_preg', $Id_form_preg)->update([
-
-
-        'Id_Pregunta'=>$request->id_Pregunta,
-        'Id_Formulario'=>$request->id_Formulario,
-		'Id_Respuesta'=>$request->id_Respuesta,
-        
-        ]);
+    
+        $form_preg= Form_preg::findOrFail($Id_form_preg);
+        $form_preg->Id_Pregunta=$request->input('id_Pregunta');
+        $form_preg->Id_Formulario=$request->input('id_Formulario');   
+        $form_preg->Id_Respuesta=$request->input('id_Respuesta');   
+  
+        $form_preg->save();
 
         return redirect()->route('form_pregslistado');
 

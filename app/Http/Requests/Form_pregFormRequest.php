@@ -27,7 +27,7 @@ class Form_pregFormRequest extends FormRequest
             //
             'id_Pregunta'=>'required',
             'id_Formulario'=>'required',
-			'Id_Respuesta'=>'required',
+			'id_Respuesta'=>'required',
             
         ];
     }

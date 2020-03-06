@@ -22,7 +22,7 @@
                 <table id="tblusuarios" class="mb-0 table table-bordered table-hover table-sm table-responsive" style="width:100%" cellspacing="0">
                     <thead>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Id_Rol</th>
+                        <th scope="col">Rol</th>
                         <th scope="col">Correo_Electronico</th>
                         <th scope="col">Contrasena</th>
                         <th scope="col">Fecha_Nacimiento</th>
@@ -37,7 +37,7 @@
                         @foreach($usuarios as $usuario)
                         <tr>
                             <td>{{$usuario->Nombre}}</td>
-                            <td>{{$usuario->Id_Rol}}</td>
+                            <td>{{$usuario->rols_Nombre}}</td>
                             <td>{{$usuario->Correo_Electronico}}</td>
                             <td>{{$usuario->Contrasena}}</td>
                             <td>{{$usuario->Fecha_Nacimiento}}</td>

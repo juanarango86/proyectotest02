@@ -51,14 +51,20 @@
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="number" name="id_Rol" class="form-control" id="validationCustom03"
-                                            placeholder="Id_Rol" required value="{{old('id_Rol')}}">
-                                        <div class="invalid-feedback">
-                                            Debe ingresar el id Rol
-                                        </div>
-                                        <!-- {!! $errors->first('id_Rol','<span style=color:blue;">:message</span>')!!} -->
-                                    </div>
+                                        <select type="text" name="id_Rol" class="form-control" id="validationCustom03"
+                                             data-live-search="true">
+                                             <option value="" enabled>Seleccione el Rol</option>
+                     
+                                             @foreach($rols as $ro)
+                     
+                                             <option value="{{$ro->Id_Rol}}">{{$ro->Nombre}}</option>
+                             
+                                             @endforeach
+                                        </select>
+                                         <!-- {!! $errors->first('id_Rol','<span style=color:blue;">:message</span>')!!} -->
+                                     </div>
                                 </div>
+
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="correo_Electronico" class="form-control" id="validationCustom03"

@@ -29,14 +29,14 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-container">
-                        <form method='POST' action="{{route('usuarioupdate', $usuario->Id_Usuario)}}">
+                        <form method='POST' action="{{route('usuarioupdate', $usuarios->Id_Usuario)}}">
                             {!!method_field('PUT')!!}
                             @csrf
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="nombre" id="nombre" class="form-control input-sm"
-                                            placeholder="nombre" value="{{$usuario->Nombre}}">
+                                            placeholder="nombre" value="{{$usuarios->Nombre}}">
                                         {!! $errors->first('nombre','<span style=color:blue;">:message</span>')!!}
 
                                     </div>
@@ -44,22 +44,34 @@
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="number" name="id_Rol" id="id_Rol" class="form-control input-sm"
+                                        <select type="text" name="id_Rol" class="form-control" id="validationCustom03"
+                                        data-live-search="true">
+                                        <!-- <option value="" enabled>Seleccione el Cliente</option> -->
+                
+                                        @foreach($rols as $ro)
+                
+                                        <!-- <option value="{{$usuarios->Id_Rol}}">{{$ro->Nombre}}</option> -->
+                                        <option {{$usuarios->Id_Rol==$ro->Id_Rol?'selected':''}} value="{{$ro->Id_Rol}}">{{$ro->Nombre}}</option>
+                        
+                                        @endforeach
+                                   </select>
+
+                                      {{--   <input type="number" name="id_Rol" id="id_Rol" class="form-control input-sm"
                                             placeholder="id_Rol" value="{{$usuario->Id_Rol}}">
-                                        {!! $errors->first('id_Rol','<span style=color:blue;">:message</span>')!!}
+                                        {!! $errors->first('id_Rol','<span style=color:blue;">:message</span>')!!} --}}
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="correo_Electronico" id="correo_Electronico" class="form-control input-sm"
-                                            placeholder="correo_Electronico" value="{{$usuario->Correo_Electronico}}">
+                                            placeholder="correo_Electronico" value="{{$usuarios->Correo_Electronico}}">
                                         {!! $errors->first('correo_Electronico','<span style=color:blue;">:message</span>')!!}
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="contrasena" id="contrasena" class="form-control input-sm"
-                                            placeholder="contrasena" value="{{$usuario->Contrasena}}">
+                                            placeholder="contrasena" value="{{$usuarios->Contrasena}}">
                                         {!! $errors->first('contrasena','<span style=color:blue;">:message</span>')
                                         !!}
                                     </div>
@@ -67,7 +79,7 @@
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="date" name="fecha_Nacimiento" id="fecha_Nacimiento" class="form-control input-sm"
-                                            placeholder="fecha_Nacimiento" value="{{$usuario->Fecha_Nacimiento}}">
+                                            placeholder="fecha_Nacimiento" value="{{$usuarios->Fecha_Nacimiento}}">
                                         {!! $errors->first('fecha_Nacimiento','<span style=color:blue;">:message</span>')
                                         !!}
                                     </div>
@@ -75,7 +87,7 @@
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="direccion" id="direccion" class="form-control input-sm"
-                                            placeholder="direccion" value="{{$usuario->Direccion}}">
+                                            placeholder="direccion" value="{{$usuarios->Direccion}}">
                                         {!! $errors->first('direccion','<span style=color:blue;">:message</span>')
                                         !!}
                                     </div>
@@ -83,7 +95,7 @@
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="telefono" id="telefono" class="form-control input-sm"
-                                            placeholder="telefono" value="{{$usuario->Telefono}}">
+                                            placeholder="telefono" value="{{$usuarios->Telefono}}">
                                         {!! $errors->first('telefono','<span style=color:blue;">:message</span>')
                                         !!}
                                     </div>
@@ -91,7 +103,7 @@
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="celular" id="celular" class="form-control input-sm"
-                                            placeholder="celular" value="{{$usuario->Celular}}">
+                                            placeholder="celular" value="{{$usuarios->Celular}}">
                                         {!! $errors->first('celular','<span style=color:blue;">:message</span>')
                                         !!}
                                     </div>

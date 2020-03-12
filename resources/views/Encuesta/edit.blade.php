@@ -64,9 +64,20 @@
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="estado" id="estado" class="form-control input-sm"
-                                            placeholder="estado" value="{{$encuestas->Estado}}">
-                                        {!! $errors->first('estado','<span style=color:blue;">:message</span>')!!}
+
+                                    <select class="form-control" id="type" name="estado">
+                                    
+                                    @if($encuestas->Estado)
+                                    <option value="{{$encuestas->Estado}}" selected>{{$encuestas->Estado}}</option>
+                                    <option value="1">1 - Creada sin informacion</option>
+                                    <option value="2">2 - Asignada</option>
+                                    <option value="3">3 - Encuesta abierta sin Finalizar</option>
+                                    <option value="4">4 - Encuesta Completa</option>
+                                    @endif
+
+                                </select>
+
+                                         <!-- {!! $errors->first('id_Cliente','<span style=color:blue;">:message</span>')!!} -->
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">

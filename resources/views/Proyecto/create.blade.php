@@ -3,19 +3,7 @@
 
 <div class="main-card mb-3 card">
     <div class="card-body">
-        <!-- @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Error!</strong> Revise los campos obligatorios.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-					@endforeach
-					
-                </ul>
-            </div>
-            @endif -->
-
-
+       
         @if(Session::has('success'))
         <div class="alert alert-info">
             {{Session::get('success')}}
@@ -102,17 +90,7 @@
                                         <!-- {!! $errors->first('id_Cliente','<span style=color:blue;">:message</span>')!!} -->
                                     </div>
                                 </div>
-                                <!-- <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="number" name="id_Tipo_De_Poblacion" class="form-control" id="validationCustom03"
-                                            placeholder="Id_Tipo_De_Poblacion" required value="{{old('id_Tipo_De_Poblacion')}}">
-                                        <div class="invalid-feedback">
-                                            Debe ingresar el id del Tipo De Poblacion
-                                        </div>
-                                        <!-- {!! $errors->first('id_Tipo_De_Poblacion','<span style=color:blue;">:message</span>')
-                                        !!}
-                                    </div>
-                                </div> -->
+                                
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                     <select type="text" name="estado" class="form-control" id="validationCustom03"
@@ -123,16 +101,7 @@
                                         <!-- {!! $errors->first('id_Cliente','<span style=color:blue;">:message</span>')!!} -->
                                     </div>
                                 </div>
-                                <!-- <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="number" name="estado" class="form-control" id="validationCustom03"
-                                            placeholder="Estado" required value="{{old('estado')}}">
-                                        <div class="invalid-feedback">
-                                            Debe ingresar el estado
-                                        </div>
-                                        <!-- {!! $errors->first('estado','<span style=color:blue;">:message</span>')!!}
-                                    </div>
-                                </div> -->
+                                
 
                             </div>
                             <br>

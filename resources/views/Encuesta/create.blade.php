@@ -72,12 +72,12 @@
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="estado" class="form-control" id="validationCustom03"
-                                            placeholder="Estado" required value="{{old('estado')}}">
-                                        <div class="invalid-feedback">
-                                            Debe ingresar el Estado
-                                        </div>
-                                        <!-- {!! $errors->first('edad_Minima','<span style=color:blue;">:message</span>')!!} -->
+                                    <select type="text" name="estado" class="form-control" id="validationCustom03"
+                                            placeholder="Estado" required value="{{old('estado')}}" readonly>
+                                    <option value="1">Inicial sin Informacion</option>
+                                  
+                                    </select>
+                                        <!-- {!! $errors->first('id_Cliente','<span style=color:blue;">:message</span>')!!} -->
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">

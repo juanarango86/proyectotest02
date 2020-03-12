@@ -64,7 +64,7 @@
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="number" name="cantidad_De_Encuestas" class="form-control" id="validationCustom03"
-                                            placeholder="Cantidad_De_Encuestas" required value="{{old('cantidad_De_Encuestas')}}">
+                                            placeholder="Cantidad_De_Encuestas" required value="{{$proyectos->Cantidad_De_Encuestas}}">
                                         <div class="invalid-feedback">
                                             Debe ingresar la cantidad De Encuestas
                                         </div>
@@ -89,16 +89,21 @@
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
-                                    <select type="text" name="estado" class="form-control" id="validationCustom03"
-                                            placeholder="Estado" required value="{{old('estado')}}">
-                                    <option value="0">Seleccione el estado actual del proyecto</option>
-                                    <option value="1">Inicial sin Encuentas</option>
-                                    <option value="2">Ejecucion Encuestas Iniciadas</option>
-                                    <option value="3">Finalizado todas las encuestas completadas</option>
-                                    </select>
-                                        <!-- {!! $errors->first('id_Cliente','<span style=color:blue;">:message</span>')!!} -->
-                                    </div>
+
+                                    <select class="form-control" id="type" name="estado">
+                                    
+                                    @if($proyectos->Estado)
+                                    <option value="{{$proyectos->Estado}}" selected>{{$proyectos->Estado}}</option>
+                                    <option value="1">1 - Inicial sin Encuestas</option>
+                                    <option value="2">2 - Encuestas en Proceso</option>
+                                    <option value="3">3 - Proyecto completado</option>
+                                    
+                                    @endif
+
+                                </select>
                                 </div>
+                                </div>
+
                                 <!-- <div class="col-xs-6 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <input type="number" name="estado" class="form-control" id="validationCustom03"
